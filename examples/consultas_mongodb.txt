@@ -1,0 +1,30 @@
+// En el editor de MongoDB, ejecutar UNA llamada por vez.
+// 1. Crear colección (equivalente a definición de estructura)
+db.createCollection("estudiantes")
+
+// 2. Insertar (DML)
+db.estudiantes.insertOne({nombre: "Ana", carrera: "Sistemas", edad: 19})
+
+// 3. Consultar (DML)
+db.estudiantes.find({})
+
+// 4. Actualizar (DML)
+db.estudiantes.updateOne({nombre: "Ana"}, {$set: {edad: 20}})
+
+// 5. Comprobar
+db.estudiantes.find({nombre: "Ana"})
+
+// 6. Crear índice (estructura)
+db.estudiantes.createIndex({nombre: 1})
+
+// 7. Eliminar índice (estructura)
+db.estudiantes.dropIndex("nombre_1")
+
+// 8. Eliminar documento (DML)
+db.estudiantes.deleteOne({nombre: "Ana"})
+
+// 9. Eliminar colección (estructura)
+// db.estudiantes.drop()
+
+// También se admite JSON, por ejemplo:
+// {"operation":"find", "collection":"estudiantes", "filter":{}, "limit":50}

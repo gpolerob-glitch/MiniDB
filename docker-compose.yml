@@ -1,0 +1,34 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: miniide_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ide_user
+      POSTGRES_PASSWORD: ide_demo_2026
+      POSTGRES_DB: miniide
+    ports:
+      - "127.0.0.1:15432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ide_user -d miniide"]
+      interval: 5s
+      timeout: 3s
+      retries: 15
+
+  mongo:
+    image: mongo:8.0
+    container_name: miniide_mongo
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ide_admin
+      MONGO_INITDB_ROOT_PASSWORD: ide_demo_2026
+    ports:
+      - "127.0.0.1:27018:27017"
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  pg_data:
+  mongo_data:

@@ -1,0 +1,32 @@
+MINIDB STUDIO - ARRANQUE EN WINDOWS
+==================================
+
+Abrir Docker Desktop. En VS Code abrir la carpeta mini-ide-sql-nosql.
+Abrir Terminal > Nuevo terminal y ejecutar:
+
+    docker compose up -d
+    docker compose ps
+
+En la primera instalacion:
+
+    py -3 -m venv .venv
+    .\.venv\Scripts\python.exe -m pip install -r requirements.txt
+
+Abrir la aplicacion:
+
+    .\.venv\Scripts\python.exe main.py
+
+PostgreSQL: localhost, puerto 15432, base miniide, usuario ide_user.
+MongoDB: localhost, puerto 27018, base miniide.
+Las credenciales de demostracion local aparecen en docker-compose.yml.
+
+En cada pestana pulsar Conectar. Luego cargar ejemplos o escribir comandos.
+Usar Ejecutar o Ctrl+Enter para ver la respuesta en pantalla.
+
+Diagnostico:
+    .\.venv\Scripts\python.exe scripts/diagnostico.py
+
+Detener contenedores sin perder datos:
+    docker compose down
+
+Para detalles de instalacion, operaciones y capturas, ver README.md.
